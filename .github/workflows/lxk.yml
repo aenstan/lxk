@@ -2,7 +2,7 @@ name: lxk
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '8 */1 * * *'
   watch:
     types: started
   repository_dispatch:
