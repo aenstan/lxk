@@ -2,7 +2,7 @@ name: longzhuzhu
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 */2 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -22,7 +22,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/nianyuguai/longzhuzhu.git"
+          source_repo: "https://github.com/longzhuzhu/nianyu.git"
           source_branch: "main"
           destination_branch: "longzhuzhu"
           github_token: ${{ secrets.PAT }}
