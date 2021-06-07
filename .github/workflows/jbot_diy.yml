@@ -23,7 +23,7 @@ jobs:
         if: env.PAT
         with:
           source_repo: "https://github.com/chiupam/JD_Diy.git"
-          source_branch: "main"
+          source_branch: "master"
           destination_branch: "jbot_diy"
           github_token: ${{ secrets.PAT }}
       # Runs a single command using the runners shell
