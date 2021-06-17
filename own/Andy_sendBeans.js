@@ -9,14 +9,14 @@ cron 15 2,14,22 * * * sendBeans.js
 ============Quantumultx===============
 [task_local]
 #送豆得豆
-15 2,14,22 * * * https://raw.githubusercontent.com/zsm85887823/JD-personal/origin/own/sendBeans.js, tag=送豆得豆
+15 2,14,22 * * * https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/Andy_sendBeans.js, tag=送豆得豆
 ================Loon==============
 [Script]
-cron "15 2,14,22 * * *" script-path=https://raw.githubusercontent.com/zsm85887823/JD-personal/origin/own/sendBeans.js,tag=送豆得豆
+cron "15 2,14,22 * * *" script-path=https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/Andy_sendBeans.js,tag=送豆得豆
 ===============Surge=================
-送豆得豆 = type=cron,cronexp="15 2,14,22 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/zsm85887823/JD-personal/origin/own/sendBeans.js
+送豆得豆 = type=cron,cronexp="15 2,14,22 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/Andy_sendBeans.js
 ============小火箭=========
-送豆得豆 = type=cron,script-path=https://raw.githubusercontent.com/zsm85887823/JD-personal/origin/own/sendBeans.js, cronexpr="15 2,14,22 * * *", timeout=3600, enable=true
+送豆得豆 = type=cron,script-path=https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/Andy_sendBeans.js, cronexpr="15 2,14,22 * * *", timeout=3600, enable=true
 */
 const $ = new Env('送豆得豆');
 $.toObj = (t, e = null) => {
