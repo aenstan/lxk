@@ -707,7 +707,7 @@ function taskUrl(functionId, body = '') {
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: `https://raw.githubusercontent.com/inoyna11/jd28/master/backUp/total/jd_crazy_joy.json`, 'timeout': 10111}, (err, resp, data) => {
+    $.get({url: `https://gitee.com/seec/share-codes/raw/master/jd_crazy_joy.json`, 'timeout': 10111}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
