@@ -5,8 +5,8 @@ name: joy挂机
 
 on:
   workflow_dispatch:
-  #schedule:
-    #- cron: '25 4,14 * * *'
+  schedule:
+    - cron: '25 4,14 * * *'
   
   watch:
     types: started
@@ -36,7 +36,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【jd_crazy_joy_coin】'
+      - name: '运行 【joy挂机】'
         run: |
           
           node jd_crazy_joy_coin.js
