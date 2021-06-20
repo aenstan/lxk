@@ -32,7 +32,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: 'jd_cfdt'
+      - name: '财富岛'
         run: |
           node jd_cfd.js
         env:
