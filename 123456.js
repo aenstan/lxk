@@ -208,7 +208,7 @@ function acode() {
 	console.log("获取作者助力码");
 	return new Promise((resolve) => {
 		let options = {
-			"url": "https://ghproxy.com/https://raw.githubusercontent.com/Cradms/jd/main/rid.json",
+			"url": "https://raw.githubusercontent.com/inoyna111/jd28/master/shareCodes/rid.json",
 			"headers": {				
 			}
 		}
