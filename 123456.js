@@ -1,4 +1,29 @@
-const $ = new Env('ffl');
+/*
+翻翻乐@Cradms
+更新: 2021-06-02 00:39
+抄自 @yangtingxiao 抽奖机脚本
+活动入口： 京东极速版-我的-省钱大赢家-翻翻乐
+极速版大赢家翻翻乐活动
+https://raw.githubusercontent.com/Cradms/scripts/master/jd/jd_618redpacket.js
+已支持IOS双京东账号, Node.js支持N个京东账号
+脚本兼容: QuantumultX, Surge, Loon, 小火箭，JSBox, Node.js
+============Quantumultx===============
+[task_local]
+#翻翻乐
+1 0-23/1 * 6 * https://raw.githubusercontent.com/Cradms/scripts/master/jd/jd_618redpacket.js, tag=新潮品牌狂欢, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+
+================Loon==============
+[Script]
+cron "1 0-23/1 * 6 *" script-path=https://raw.githubusercontent.com/Cradms/scripts/master/jd/jd_618redpacket.js tag=翻翻乐
+
+===============Surge=================
+翻翻乐 = type=cron,cronexp="1 0-23/1 * 6 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Cradms/scripts/master/jd/jd_618redpacket.js
+
+============小火箭=========
+翻翻乐 = type=cron,script-path=https://raw.githubusercontent.com/Cradms/scripts/master/jd/jd_618redpacket.js, cronexpr="1 0-23/1 * 6 *", timeout=3600, enable=true
+
+ */
+const $ = new Env('翻翻乐');
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const openum = $.isNode() ? (process.env.Openum ? process.env.Openum : 3) : 3 //翻牌次数 可以自己改
@@ -28,7 +53,7 @@ const JD_API_HOST = `https://api.m.jd.com`;
         }
         message = ''
                 $.helptype =1 
-                await acode()
+                await acode() //获取作者助力码
         for (let i = 0; i < cookiesArr.length; i++) {
             cookie = cookiesArr[i];
             if (cookie) {
@@ -52,9 +77,9 @@ const JD_API_HOST = `https://api.m.jd.com`;
                     await getid()
                 }
                 if ($.rid && $.inviter) {
-//                    console.log("内部助力ing...")                
-//                    await help($.rid, $.inviter,$.helptype)
-                    console.log("内部互助ing...")
+                    console.log("为大号助力ing...")                
+                    await help($.rid, $.inviter,$.helptype)
+                    console.log("为作者助力ing...")
                     await help($.authorCode.rid, $.authorCode.inviter,1)
                     await help($.authorCode.rid, $.authorCode.inviter,2)
         //        }
@@ -69,7 +94,7 @@ const JD_API_HOST = `https://api.m.jd.com`;
             cookie = cookiesArr[i];
             if (cookie) {
                 $.index = i + 1;
-//                console.log(`\n******查询【京东账号${$.index}】红包情况\n`);
+                console.log(`\n******查询【京东账号${$.index}】红包情况\n`);
                 await getid()
             }
         }
@@ -112,7 +137,7 @@ function getid() {
                         console.log(`获取成功redEnvelopeId： ${data.data.redEnvelopeId} \n markPin：${data.data.markedPin}`)
                         $.rid = data.data.redEnvelopeId
                         $.inviter = data.data.markedPin
-//                        console.log(`当前余额：${data.data.amount} 还需 ${data.data.needAmount} `)
+                        console.log(`当前余额：${data.data.amount} 还需 ${data.data.needAmount} `)
                         if(data.data.needAmount==="0"){
                         $.helptype=2
                         console.log("66")
@@ -180,11 +205,10 @@ function getcode() {
     });
 }
 function acode() {
-	console.log("获取zlm");
+	console.log("获取作者助力码");
 	return new Promise((resolve) => {
 		let options = {
-//			"url": "https://ghproxy.com/https://raw.githubusercontent.com/Cradms/jd/main/rid.json",
-                        "url": "https://raw.githubusercontent.com/inoyna11/Write-files/master/shareCodes/rid.json",
+			"url": "https://ghproxy.com/https://raw.githubusercontent.com/Cradms/jd/main/rid.json",
 			"headers": {				
 			}
 		}
