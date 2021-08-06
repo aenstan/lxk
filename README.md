@@ -1,5 +1,7 @@
 # 青龙面板与ninja扫码登录结合
 
+详细教程：https://gcdd1993.github.io/p/56460/
+
 使用
 
 ```bash
