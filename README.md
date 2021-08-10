@@ -23,6 +23,17 @@ wget https://ghproxy.com/https://raw.githubusercontent.com/gcdd1993/qinglong-nin
 docker-compose up -d
 ```
 
+# 更新
+
+> 可以修改`docker-compose.yml`里面的`image.tag`为你要改的版本，所有版本在这里可以看到[Docker Hub](https://hub.docker.com/repository/docker/gcdd1993/qinglong-ninja)
+
+```bash
+# ！！注意：执行这一步前，如果有需要备份的文件没有mount到宿主机的，记得备份
+docker-compose down && docker-compose up -d 
+# 查看日志
+docker-compose logs -f 
+```
+
 ## 修改`docker-compose.yml`中的映射路径
 
 ```yaml
@@ -41,3 +52,4 @@ volumes:
 联系vx gclovewm123
 
  <img src="https://raw.githubusercontent.com/gcdd1993/gcdd1993.github.io/feature/imageRepo/img/微信二维码.jpg" width = "200" height = "200" alt="扫码加我好友，一起薅羊毛" align=center />
+
