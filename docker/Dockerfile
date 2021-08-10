@@ -1,5 +1,8 @@
 FROM whyour/qinglong:latest
 
+LABEL maintainer="gcdd1993" \
+    qinglong_version="v2.8.1-004"
+
 RUN set -ex \
     && git clone https://github.com/MoonBegonia/ninja.git /ql/ninja \
     && cd /ql/ninja/backend \
