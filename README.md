@@ -1,5 +1,9 @@
 # 青龙面板与ninja扫码登录结合
 
+## 教程
+
+[【京东薅羊毛】一键部署青龙面板+ninja扫码登录 | IT学习社 (gcdd.top)](https://blog.gcdd.top/p/56460/)
+
 ## 更新日志
 
 - v20210810
@@ -31,3 +35,9 @@ volumes:
   - ./scripts:/ql/scripts
   - ./jbot:/ql/jbot
 ```
+
+# 交流或代挂
+
+联系vx gclovewm123
+
+ <img src="https://raw.githubusercontent.com/gcdd1993/gcdd1993.github.io/feature/imageRepo/img/微信二维码.jpg" width = "200" height = "200" alt="扫码加我好友，一起薅羊毛" align=center />
