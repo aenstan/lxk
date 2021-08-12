@@ -1,5 +1,5 @@
 <p>
-  <a href="#Travis CI"><img src="https://www.travis-ci.com/gcdd1993/qinglong-ninja.svg?branch=main)](https://www.travis-ci.com/gcdd1993/qinglong-ninja" alt="Build Status"></a>
+  <a href="#Travis CI"><img src="https://www.travis-ci.com/gcdd1993/qinglong-ninja.svg?branch=main" alt="Build Status"></a>
 </p>
 
 # 青龙面板与ninja扫码登录结合
