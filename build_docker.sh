@@ -2,6 +2,7 @@
 version=v$(date "+%Y%m%d")
 
 set -ex
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 # 清理docker镜像
 docker rmi whyour/qinglong:latest || true
 # 清理build 缓存

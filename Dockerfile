@@ -1,7 +1,9 @@
 FROM whyour/qinglong:latest
 
-LABEL maintainer="gcdd1993" \
-    qinglong_version="v2.8.1-004"
+ARG QL_VERSION
+
+LABEL maintainer="gcdd1993 <gcwm99@gmail.com>"
+LABEL qinglong_version="${QL_VERSION}"
 
 RUN set -ex \
     && git clone https://github.com/MoonBegonia/ninja.git /ql/ninja \
