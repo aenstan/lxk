@@ -1,10 +1,19 @@
+<p>
+  <a href="#Travis CI"><img src="https://www.travis-ci.com/gcdd1993/qinglong-ninja.svg?branch=main)](https://www.travis-ci.com/gcdd1993/qinglong-ninja" alt="Build Status"></a>
+</p>
+
 # 青龙面板与ninja扫码登录结合
 
 ## 教程
 
 [【京东薅羊毛】一键部署青龙面板+ninja扫码登录 | IT学习社 (gcdd.top)](https://blog.gcdd.top/p/56460/)
+[Github](https://github.com/gcdd1993/qinglong-ninja)
 
 ## 更新日志
+
+- v20210812
+
+> 青龙版本`v2.8.1-005`
 
 - v20210810
 
