@@ -58,7 +58,8 @@ volumes:
 
 # 交流或代挂
 
-联系vx gclovewm123
+-联系微信 gclovewm123
 
  <img src="https://raw.githubusercontent.com/gcdd1993/gcdd1993.github.io/feature/imageRepo/img/微信二维码.jpg" width = "200" height = "200" alt="扫码加我好友，一起薅羊毛" align=center />
 
+- [TG群](https://t.me/jd_wool)
