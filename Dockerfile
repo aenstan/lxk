@@ -13,6 +13,10 @@ RUN set -ex \
 COPY docker-entrypoint.sh /ql/docker/docker-entrypoint.sh
 COPY sendNotify.js /ql/scripts/sendNotify.js
 
+# fix "permission denied: unknown"
+RUN set -ex \
+    && chmod +x /ql/docker/docker-entrypoint.sh
+
 EXPOSE 5701
 
 ENTRYPOINT ["./docker/docker-entrypoint.sh"]
