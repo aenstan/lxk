@@ -56,6 +56,11 @@ volumes:
   - ./jbot:/ql/jbot
 ```
 
+## 拉取脚本
+```bash
+ql repo https://ghproxy.com/https://github.com/gcdd1993/jd_scripts.git "jd_|jx_|getJDCookie" "activity|backUp" "^jd[^_]|USER"
+```
+
 # 交流或代挂
 
 - [TG群](https://t.me/jd_wool)
