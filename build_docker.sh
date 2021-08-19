@@ -1,5 +1,6 @@
 #! /bin/bash
-version=v$(date "+%Y%m%d")
+#version=v$(date "+%Y%m%d")
+version=$QL_VERSION
 
 set -ex
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
