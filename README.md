@@ -6,7 +6,7 @@
 
 ## 教程
 
-[gcdd1993/qinglong-xdd: 青龙面板集成xdd (github.com)](https://github.com/gcdd1993/qinglong-xdd)
+[【京东薅羊毛】一键部署青龙面板 xdd扫码登录](https://blog.gcdd.top/p/35018/)
 
 [Docker Hub](https://hub.docker.com/repository/docker/gcdd1993/qinglong-xdd)
 
