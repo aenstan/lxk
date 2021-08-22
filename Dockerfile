@@ -10,8 +10,7 @@ RUN mkdir -p /ql/xdd
 COPY docker-entrypoint.sh /ql/docker/docker-entrypoint.sh
 
 # 初始化生成目录 && fix "permission denied: unknown"
-RUN set -eux; \
-    && chmod +x /ql/docker/docker-entrypoint.sh
+RUN chmod 755 /ql/docker/docker-entrypoint.sh
 
 # fix /ql/shell/share.sh: line 311: /ql/log/task_error.log: No such file or directory
 RUN mkdir -p /ql/log \
