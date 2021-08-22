@@ -3,6 +3,10 @@
 </p>
 `XDD`的热度🔥越来越高了，目前它的功能确实很多花样，非常有意思。但是很多人都无法自己完成编译，更不用说部署了。所以我特地编译了青龙面板+xdd一键部署镜像。
 
+[一键部署青龙 + ninja请移步这里](https://blog.gcdd.top/p/56460/)
+
+如果想搭建但是还没有购买服务器的，可以点我的链接进行购买，[阿里云轻量级服务器 2核2G 99/年](https://www.aliyun.com/minisite/goods?userCode=ijsckn04&share_source=copy_link)，不仅你可以获得优惠券，我也可以获得邀请人数。购买完成可以添加我的qq 1398371419，备注“青龙”，我将会全程指导你安装，如果实在不会，我也可以代为搭建。
+
 <!-- more -->
 
 # 部署
@@ -171,8 +175,7 @@ docker-compose down && docker-compose up -d
 一般是xdd启动失败了，可以通过以下命令检查xdd是否启动成功
 
 ```bash
-cd /data/qinglong-xdd
-docker-compose logs -f
+cd /data/qinglong-xdddocker-compose logs -f
 ```
 
 ![image-20210821214835916](https://cdn.jsdelivr.net/gh/gcdd1993/image-repo/img/image-20210821214835916.png)
@@ -194,32 +197,19 @@ docker-compose logs -f
 > 由于数据存储在sqllite，所以必须修改下db目录，并创建db文件
 
 ```bash
-cd /data/qinglong-xdd/xddconf
-vi config.yaml
-# 修改以下配置
-database: /ql/db/xdd.db
-# 创建xdd.db
-cd /data/qinglong-xdd/db
-touch xdd.db
+cd /data/qinglong-xdd/xddconfvi config.yaml# 修改以下配置database: /ql/db/xdd.db# 创建xdd.dbcd /data/qinglong-xdd/dbtouch xdd.db
 ```
 
 ### 进入容器xdd目录
 
 ```bash
-cd /data/qinglong-xdd
-docker exec -it qinglong-xdd sh # 或者bash
-# 以下命令在容器内执行
-cd /ql/xdd
+cd /data/qinglong-xdddocker exec -it qinglong-xdd sh # 或者bash# 以下命令在容器内执行cd /ql/xdd
 ```
 
 ### 杀掉xdd进程并以前台模式运行
 
 ```bash
-# 以下命令在容器内执行
-ps -ajx | grep xdd ## 查看原程序PID
-kill -9 ${PID}
-cd /ql/xdd
-./xdd
+# 以下命令在容器内执行ps -ajx | grep xdd ## 查看原程序PIDkill -9 ${PID}cd /ql/xdd./xdd
 ```
 
 前台启动后，应该会出现初始化数据库，然后QQ机器人二维码，然后扫码即可
@@ -233,10 +223,7 @@ cd /ql/xdd
 ### 以后台模式重启xdd
 
 ```bash
-# Ctrl + C退出
-./xdd -d
-# 退出容器
-exit
+# Ctrl + C退出./xdd -d# 退出容器exit
 ```
 
 ![image-20210821214358868](https://cdn.jsdelivr.net/gh/gcdd1993/image-repo/img/image-20210821214358868.png)
