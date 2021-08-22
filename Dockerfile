@@ -5,7 +5,7 @@ ENV XDD_GIT_URL https://github.com/cdle/xdd.git
 # 编译xdd
 # 安装xdd 目录为 /ql/xdd
 RUN set -eux; \
-    && apt-get update -y \
+    apt-get update -y \
     && apt-get install -y git \
     && mkdir /builder \
     && cd /builder \
@@ -33,7 +33,7 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
 
 WORKDIR ${QL_DIR}
 RUN set -eux; \
-    && apt-get update -y \
+    apt-get update -y \
     && apt-get install -y bash \
                      coreutils \
                      moreutils \
