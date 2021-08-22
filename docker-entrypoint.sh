@@ -49,7 +49,7 @@ fi
 echo -e "======================8. 启动xdd面板========================\n"
 mkdir -p /ql/xdd
 cd /ql/xdd
-curl -L "XDD_RELEASE_URL" -o xdd.tar.gz && tar -zxvf xdd.tar.gz && rm xdd.tar.gz
+curl -L "${XDD_RELEASE_URL}" -o xdd.tar.gz && tar -zxvf xdd.tar.gz && rm xdd.tar.gz
 ./xdd -d
 echo -e "======================xdd面板启动完成========================\n"
 
