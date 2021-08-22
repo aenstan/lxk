@@ -47,7 +47,10 @@ if [[ $EnableExtraShell == true ]]; then
 fi
 
 echo -e "======================8. 启动xdd面板========================\n"
-cd /ql/xdd && ./xdd -d
+mkdir -p /ql/xdd
+cd /ql/xdd
+curl -L "XDD_RELEASE_URL" -o xdd.tar.gz && tar -zxvf xdd.tar.gz && rm xdd.tar.gz
+./xdd -d
 echo -e "======================xdd面板启动完成========================\n"
 
 echo -e "############################################################\n"

@@ -11,11 +11,9 @@ services:
     environment:
       - ENABLE_HANGUP=true
       - ENABLE_WEB_PANEL=true
+      - XDD_RELEASE_URL=https://ghproxy.com/https://github.com/gcdd1993/xdd/releases/download/v20210822/xdd_20210822_Linux_x86_64.tar.gz
     volumes:
       - ./config:/ql/config
       - ./db:/ql/db
       - ./scripts:/ql/scripts
-      - ./xddconf:/ql/xdd/conf
-      - ./xdd/data:/ql/xdd/data
-      - ./xdd/repos:/ql/xdd/repos
-      - ./xdd/scripts:/ql/xdd/scripts
+      - ./xdd:/ql/xdd
