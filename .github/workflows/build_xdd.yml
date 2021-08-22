@@ -1,12 +1,11 @@
 name: 编译xdd
 on:
+  push:
+    tags:
+      - '*'
   workflow_dispatch:
-  schedule:
-    - cron: '0 16 * * *' #北京时间0点运行，action会有延迟
   watch:
     types: started
-  repository_dispatch:
-    types: qinglong_xdd
 jobs:
   release-linux-386:
     name: release linux/386
@@ -28,4 +27,4 @@ jobs:
           version: latest
           args: release --rm-dist
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
