@@ -1,30 +1,25 @@
 name: 编译xdd
-on: [ push, pull_request ]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *' #北京时间0点运行，action会有延迟
+  watch:
+    types: started
+  repository_dispatch:
+    types: qinglong_xdd
 jobs:
-  build-and-prerelease:
+  release-linux-386:
+    name: release linux/386
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
           repository: cdle/xdd
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-
-      - name: Set up Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.16.7
-
-      - name: Build XDD
-        run: |
-          go build
-
-      - name: Upload XDD
-        uses: actions/upload-artifact@v1
-        with:
-          name: XDD CI built release nightly
-          path: xdd
+      - name: compile and release
+        uses: ngs/go-release.action@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GOARCH: "386"
+          GOOS: linux
