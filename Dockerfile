@@ -1,13 +1,12 @@
-FROM golang:1.16.7-alpine3.14 AS builder
+FROM golang:1.16.7 AS builder
 
 ENV XDD_GIT_URL https://github.com/cdle/xdd.git
 
 # 编译xdd
 # 安装xdd 目录为 /ql/xdd
 RUN set -eux; \
-    sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
-    && apk update \
-    && apk add --no-cache --virtual .build-deps git build-base \
+    && apt-get update -y \
+    && apt-get install -y git \
     && mkdir /builder \
     && cd /builder \
     && git clone ${XDD_GIT_URL} \
@@ -33,10 +32,8 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     QL_DIR=/ql
 
 WORKDIR ${QL_DIR}
-RUN set -ex \
-    && sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
+RUN set -eux; \
     && apt-get update -y \
-    && apt-get upgrade -y \
     && apt-get install -y bash \
                      coreutils \
                      moreutils \
@@ -48,13 +45,14 @@ RUN set -ex \
                      openssl \
                      nginx \
                      python3 \
+                     python3-pip \
                      jq \
                      openssh-server \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "$TZ" > /etc/timezone \
     && touch ~/.bashrc \
     && mkdir /run/nginx \
-    && git clone -b ${QL_BRANCH} ${QL_URL} ${QL_DIR} \
+    && git clone -b ${QL_BRANCH} "https://ghproxy.com/${QL_URL}" ${QL_DIR} \
     && git config --global user.email "qinglong@@users.noreply.github.com" \
     && git config --global user.name "qinglong" \
     && git config --global pull.rebase true \
@@ -68,7 +66,7 @@ RUN set -ex \
     && rm -rf /root/.npm \
     && pnpm install --prod \
     && rm -rf /root/.pnpm-store \
-    && git clone -b ${QL_BRANCH} https://github.com/whyour/qinglong-static.git /static \
+    && git clone -b ${QL_BRANCH} https://ghproxy.com/https://github.com/whyour/qinglong-static.git /static \
     && cp -rf /static/* ${QL_DIR} \
     && rm -rf /static
 
