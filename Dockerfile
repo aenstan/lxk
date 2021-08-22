@@ -26,6 +26,7 @@ RUN mkdir -p /ql/xdd
 
 COPY docker-entrypoint.sh /ql/docker/docker-entrypoint.sh
 COPY --from=builder /builder/xdd/xdd /ql/xdd/xdd
+COPY --from=builder /builder/xdd/scripts /ql/xdd/scripts
 
 # 初始化生成目录 && fix "permission denied: unknown"
 RUN set -eux; \
