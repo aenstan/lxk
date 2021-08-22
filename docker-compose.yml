@@ -1,7 +1,7 @@
 version: "3"
 services:
   qinglong-xdd:
-    image: gcdd1993/qinglong-xdd:v2.8.4
+    image: gcdd1993/qinglong-xdd:v2.8.4-002
     container_name: qinglong-xdd
     restart: unless-stopped
     tty: true

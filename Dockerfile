@@ -48,6 +48,7 @@ RUN set -eux; \
                      python3-pip \
                      jq \
                      openssh-server \
+                     cron \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "$TZ" > /etc/timezone \
     && touch ~/.bashrc \
