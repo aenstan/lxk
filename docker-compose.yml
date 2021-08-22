@@ -14,4 +14,8 @@ services:
     volumes:
       - ./config:/ql/config
       - ./db:/ql/db
+      - ./scripts:/ql/scripts
       - ./xddconf:/ql/xdd/conf
+      - ./xdd/data:/ql/xdd/data
+      - ./xdd/repos:/ql/xdd/repos
+      - ./xdd/scripts:/ql/xdd/scripts
