@@ -59,9 +59,9 @@ if [[ ! -f "$XDD_WORKDIR/xdd" ]]; then
   chmod 777 xdd
 
   # 移动并清理
-  cp /tmp/xdd/xdd "$XDD_REPO_URL"/xdd
-  mkdir -p "$XDD_REPO_URL"/scripts
-  cp -R /tmp/xdd/scripts/* "$XDD_REPO_URL"/scripts
+  cp /tmp/xdd/xdd "$XDD_WORKDIR"/xdd
+  mkdir -p "$XDD_WORKDIR"/scripts
+  cp -R /tmp/xdd/scripts/* "$XDD_WORKDIR"/scripts
   rm -rf /tmp/*
   echo -e "=================== 小滴滴编译完毕 ==================="
 fi
