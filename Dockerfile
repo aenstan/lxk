@@ -92,6 +92,11 @@ ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
+# 设置go编译环境
+ENV GO111MODULE on
+ENV GOPROXY https://mirrors.aliyun.com/goproxy/
+RUN go env
+
 # endregion
 
 ARG QL_VERSION
