@@ -52,7 +52,7 @@ XDD_WORKDIR=/ql/xdd
 if [[ ! -f "$XDD_WORKDIR/xdd" ]]; then
   echo -e "=================== 未检测到小滴滴可执行文件，开始编译小滴滴 ==================="
   cd /ql
-  rm -rf xdd
+  rm -rf xdd/*
   git clone "$XDD_REPO_URL" xdd
   cd xdd
   go build

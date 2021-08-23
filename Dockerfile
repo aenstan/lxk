@@ -94,7 +94,7 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 # 设置go编译环境
 ENV GO111MODULE on
-ENV GOPROXY https://mirrors.aliyun.com/goproxy/
+ENV GOPROXY https://goproxy.cn
 RUN go env
 
 # endregion
@@ -115,9 +115,9 @@ RUN mkdir -p /ql/xdd \
     && mkdir -p /ql/log \
     && echo "" > /ql/log/task_error.log
 
-COPY docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 # 初始化生成目录 && fix "permission denied: unknown"
-RUN chmod +x /usr/local/bin/docker_entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # 青龙默认端口
 EXPOSE 5701
@@ -126,4 +126,4 @@ EXPOSE 8080
 
 VOLUME /ql/xdd
 
-ENTRYPOINT ["docker_entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
