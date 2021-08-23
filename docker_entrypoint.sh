@@ -51,18 +51,12 @@ XDD_WORKDIR=/ql/xdd
 # clone xdd仓库，环境变量 XDD_REPO_URL
 if [[ ! -f "$XDD_WORKDIR/xdd" ]]; then
   echo -e "=================== 未检测到小滴滴可执行文件，开始编译小滴滴 ==================="
-  cd /tmp
+  cd /ql
   rm -rf xdd
   git clone "$XDD_REPO_URL" xdd
   cd xdd
   go build
   chmod 777 xdd
-
-  # 移动并清理
-  cp /tmp/xdd/xdd "$XDD_WORKDIR"/xdd
-  mkdir -p "$XDD_WORKDIR"/scripts
-  cp -R /tmp/xdd/scripts/* "$XDD_WORKDIR"/scripts
-  rm -rf /tmp/*
   echo -e "=================== 小滴滴编译完毕 ==================="
 fi
 
