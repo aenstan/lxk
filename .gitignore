@@ -3,3 +3,4 @@ config
 db
 xddconf
 dist/
+xdd/

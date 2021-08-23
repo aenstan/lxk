@@ -1,27 +1,18 @@
 version: "3"
 services:
-  qinglong:
-    image: whyour/qinglong:latest
-    container_name: qinglong
+  qinglong-xdd:
+    image: gcdd1993/qinglong-xdd:latest
+    container_name: qinglong-xdd
     restart: unless-stopped
     tty: true
     ports:
       - 5700:5700
+      - 8080:8080
     environment:
       - ENABLE_HANGUP=true
       - ENABLE_WEB_PANEL=true
+      - XDD_REPO_URL=https://ghproxy.com/https://github.com/cdle/xdd
     volumes:
       - ./config:/ql/config
       - ./db:/ql/db
-      - ./scripts:/ql/scripts
-  xdd:
-    image: gcdd1993/xdd:v20210823
-    container_name: xdd
-    restart: unless-stopped
-    tty: true
-    ports:
-      - 8080:8080
-    environment:
-      - XDD_REPO_URL=https://ghproxy.com/https://github.com/cdle/xdd
-    volumes:
-      - ./xdd:/xdd
+      - ./xdd:/ql/xdd
