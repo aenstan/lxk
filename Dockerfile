@@ -9,14 +9,14 @@ RUN set -eux; \
     && apk update \
     && apk add --no-cache --virtual .build-deps git build-base
 
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 
 # 初始化生成目录 && fix "permission denied: unknown"
-RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker_entrypoint.sh
 
 # xdd默认端口
 EXPOSE 8080
 
 VOLUME /xdd
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["docker_entrypoint.sh"]

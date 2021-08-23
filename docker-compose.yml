@@ -15,7 +15,7 @@ services:
       - ./db:/ql/db
       - ./scripts:/ql/scripts
   xdd:
-    image: gcdd1993/xdd:v2.8.4-002
+    image: gcdd1993/xdd:v20210823
     container_name: xdd
     restart: unless-stopped
     tty: true
