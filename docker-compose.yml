@@ -1,19 +1,27 @@
 version: "3"
 services:
-  qinglong-xdd:
-    image: gcdd1993/qinglong-xdd:v2.8.4-002
-    container_name: qinglong-xdd
+  qinglong:
+    image: whyour/qinglong:latest
+    container_name: qinglong
     restart: unless-stopped
     tty: true
     ports:
       - 5700:5700
-      - 8080:8080
     environment:
       - ENABLE_HANGUP=true
       - ENABLE_WEB_PANEL=true
-      - XDD_RELEASE_URL=https://ghproxy.com/https://github.com/gcdd1993/xdd/releases/download/v20210822/xdd_20210822_Linux_x86_64.tar.gz
     volumes:
       - ./config:/ql/config
       - ./db:/ql/db
       - ./scripts:/ql/scripts
-      - ./xdd:/ql/xdd
+  xdd:
+    image: gcdd1993/xdd:v2.8.4-002
+    container_name: xdd
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 8080:8080
+    environment:
+      - XDD_REPO_URL=https://ghproxy.com/https://github.com/cdle/xdd
+    volumes:
+      - ./xdd:/xdd

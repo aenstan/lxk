@@ -1,63 +1,19 @@
-#!/bin/bash
-set -e
+#! /bin/bash
+set -ex
+WORK_DIR=/xdd/
 
-dir_shell=/ql/shell
-. $dir_shell/share.sh
-link_shell
-echo -e "======================1. 检测配置文件========================\n"
-fix_config
-cp -fv $dir_root/docker/front.conf /etc/nginx/conf.d/front.conf
-pm2 l >/dev/null 2>&1
-echo
+# clone xdd仓库，环境变量 XDD_REPO_URL
+cd /tmp
+git clone "${XDD_REPO_URL}" xdd
+cd xdd
+go build
+chmod 777 xdd
 
-echo -e "======================2. 安装依赖========================\n"
-update_depend
-echo
+# 移动并清理
+cp /tmp/xdd/xdd "${WORK_DIR}"
+cp -R /tmp/xdd/scripts "${WORK_DIR}"
+rm -rf /tmp/*
 
-echo -e "======================3. 启动nginx========================\n"
-nginx -s reload 2>/dev/null || nginx -c /etc/nginx/nginx.conf
-echo -e "nginx启动成功...\n"
-
-echo -e "======================4. 启动控制面板========================\n"
-if [[ $(pm2 info panel 2>/dev/null) ]]; then
-  pm2 reload panel --source-map-support --time
-else
-  pm2 start $dir_root/build/app.js -n panel --source-map-support --time
-fi
-echo -e "控制面板启动成功...\n"
-
-echo -e "======================5. 启动定时任务========================\n"
-if [[ $(pm2 info schedule 2>/dev/null) ]]; then
-  pm2 reload schedule --source-map-support --time
-else
-  pm2 start $dir_root/build/schedule.js -n schedule --source-map-support --time
-fi
-echo -e "定时任务启动成功...\n"
-
-if [[ $AutoStartBot == true ]]; then
-  echo -e "======================6. 启动bot========================\n"
-  nohup ql bot >>$dir_log/start.log 2>&1 &
-  echo -e "bot后台启动中...\n"
-fi
-
-if [[ $EnableExtraShell == true ]]; then
-  echo -e "======================7. 执行自定义脚本========================\n"
-  nohup ql extra >>$dir_log/start.log 2>&1 &
-  echo -e "自定义脚本后台执行中...\n"
-fi
-
-echo -e "======================8. 启动xdd面板========================\n"
-mkdir -p /ql/xdd
-cd /ql/xdd
-curl -L "${XDD_RELEASE_URL}" -o xdd.tar.gz && tar -zxvf xdd.tar.gz && rm xdd.tar.gz
-./xdd -d
-echo -e "======================xdd面板启动完成========================\n"
-
-echo -e "############################################################\n"
-echo -e "容器启动成功..."
-echo -e "\n请先访问5700端口，登录成功面板之后再执行添加定时任务..."
-echo -e "############################################################\n"
-
-crond -f >/dev/null
-
-exec "$@"
+# 启动xdd
+cd "${WORK_DIR}" && ./xdd
+echo -e "=================== 小滴滴启动完毕 ==================="
