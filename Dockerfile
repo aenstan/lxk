@@ -7,10 +7,9 @@ WORKDIR /xdd
 RUN set -eux; \
     sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \
-    && apk add --no-cache --virtual .build-deps git build-base
+    && apk add --no-cache --virtual .build-deps bash git build-base
 
 COPY docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
-
 # 初始化生成目录 && fix "permission denied: unknown"
 RUN chmod +x /usr/local/bin/docker_entrypoint.sh
 
