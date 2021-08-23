@@ -1,7 +1,6 @@
 FROM golang:1.16.7-alpine3.14
 
 LABEL maintainer="gcdd1993 <gcwm99@gmail.com>"
-LABEL qinglong_version="${QL_VERSION}"
 
 WORKDIR /xdd
 
