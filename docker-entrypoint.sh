@@ -52,14 +52,10 @@ XDD_WORKDIR=/ql/xdd
 if [[ ! -f "$XDD_WORKDIR/xdd" ]]; then
   echo -e "=================== 未检测到小滴滴可执行文件，开始编译小滴滴 ==================="
   cd /ql
-  if [[ ! -d $XDD_WORKDIR ]]; then
-    git clone "$XDD_REPO_URL" $XDD_WORKDIR
-    cd $XDD_WORKDIR
-    go build
-    chmod 777 xdd
-  else
-    echo "=================== 无法克隆小滴滴到本地，请确认/q/xdd目录所挂载宿主机目录为空，然后重启容器 docker-compose restart ==================="
-  fi
+  git clone "$XDD_REPO_URL" $XDD_WORKDIR
+  cd $XDD_WORKDIR
+  go build
+  chmod 777 xdd
   echo -e "=================== 小滴滴编译完毕 ==================="
 fi
 
