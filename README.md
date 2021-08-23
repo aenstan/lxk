@@ -1,11 +1,44 @@
 <p>
   <a href="#Travis CI"><img src="https://www.travis-ci.com/gcdd1993/qinglong-xdd.svg?branch=master" alt="Build Status"></a>
 </p>
-`XDD`的热度🔥越来越高了，目前它的功能确实很多花样，非常有意思。但是很多人都无法自己完成编译，更不用说部署了。所以我特地编译了青龙面板+xdd一键部署镜像。
+# 更新日志
+
+## 2021-08-23更新
+
+- 支持xdd容器内升级
+- 修复启动需要重新扫码绑定机器人的问题
+
+更新步骤（重要）
+
+```bash
+# 拷贝xdd/xdd.db和xdd配置到安全的地方，比如你自己的电脑
+mkdir -p /data/qinglong-xdd
+cd /data/qinglong-xdd
+wget https://ghproxy.com/https://raw.githubusercontent.com/gcdd1993/qinglong-xdd/master/docker-compose.yml
+# 停止容器
+docker-compose down 
+# 删除旧的镜像
+docker image ls | grep xdd # 记住镜像id，有多个删除多个
+docker rmi --force 镜像id
+# 启动容器
+docker-compose up -d
+# 还原数据
+cp db/xdd.db xdd/.xdd.db
+```
+
+![image-20210823155447173](https://cdn.jsdelivr.net/gh/gcdd1993/image-repo/img/image-20210823155447173.png)
+
+![image-20210823160123948](https://cdn.jsdelivr.net/gh/gcdd1993/image-repo/img/image-20210823160123948.png)
+
+
+
+------
+
+XDD的热度🔥越来越高了，目前它的功能确实很多花样，非常有意思。但是很多人都无法自己完成编译，更不用说部署了。所以我特地编译了青龙面板+xdd一键部署镜像。
 
 [一键部署青龙 + ninja请移步这里](https://blog.gcdd.top/p/56460/)
 
-如果想搭建但是还没有购买服务器的，可以点我的链接进行购买，[阿里云轻量级服务器 2核2G 99/年](https://www.aliyun.com/minisite/goods?userCode=ijsckn04&share_source=copy_link)，不仅你可以获得优惠券，我也可以获得邀请人数。购买完成可以添加我的qq 1398371419，备注“青龙”，我将会全程指导你安装，如果实在不会，我也可以代为搭建。
+如果想搭建但是还没有购买服务器的，可以点我的链接进行购买，[阿里云轻量级服务器 2核2G 99/年](https://www.aliyun.com/minisite/goods?userCode=ijsckn04&share_source=copy_link)，不仅你可以获得优惠券，我也可以获得邀请人数。购买完成可以添加我的qq `1398371419`，备注“青龙”，我将会全程指导你安装，如果实在不会，我也可以代为搭建。
 
 <!-- more -->
 
@@ -121,7 +154,7 @@ containers: #容器，可配置多个
 theme: https://ghproxy.com/https://raw.githubusercontent.com/cdle/jd_study/main/xdd/theme/noodin.html #自定义主题，支持本地、网络路径（我喜欢吃面）
 static: ./static #静态文件 便于自定义二维码页面时，引入css、js等文件（不用动）
 master: jd_xxxxx #管理员账户pin，有多个用'&'拼接
-database: /ql/db/xdd.db  #数据库位置，默认./.jdc.db #（强迫症的我还是给它找了个家，路径按自己的来改）
+database:  #数据库位置，默认./.jdc.db #（强迫症的我还是给它找了个家，路径按自己的来改）
 qywx_key:  #企业微信推送key（这个就是企业微信机器人的key）
 daily_push: #定时任务（这个我暂时没有配置）
 resident: #均衡模式下所有容器共同的账号pin，有多个用'&'拼接。不建议填写，后续实现指定账号助力功能。（这个我也没配置，多容器自己试试）
