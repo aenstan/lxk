@@ -120,7 +120,7 @@ COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # 青龙默认端口
-EXPOSE 5701
+EXPOSE 5700
 # xdd默认端口
 EXPOSE 8080
 
