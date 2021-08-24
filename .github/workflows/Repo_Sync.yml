@@ -1,0 +1,60 @@
+name: Repo_Sync
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Init Build Dependencies
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -E rm -rf /etc/apt/sources.list.d
+        sudo -E apt-get update -y && apt-get install -y build-essential git git-core curl wget && apt-get clean -y
+        git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
+    - name: Clone QingLong
+      run: |
+        git clone -b master https://github.com/whyour/qinglong.git qinglong
+    - name: Push QingLong
+      uses: ad-m/github-push-action@master
+      with:
+        directory: qinglong
+        github_token: ${{ secrets.TOKEN }}
+        branch: qinglong
+    - name: Clone XDD_Main
+      run: |
+        git clone -b main https://github.com/cdle/xdd.git master
+    - name: Push XDD_Main
+      uses: ad-m/github-push-action@master
+      with:
+        directory: master
+        github_token: ${{ secrets.TOKEN }}
+        branch: main
+    - name: Clone Ninja
+      run: |
+        git clone -b main https://github.com/gcdd1993/qinglong-ninja.git ninja
+    - name: Push Ninja
+      uses: ad-m/github-push-action@master
+      with:
+        directory: ninja
+        github_token: ${{ secrets.TOKEN }}
+        branch: ninja
+    - name: Clone XDD
+      run: |
+        git clone -b master https://github.com/gcdd1993/qinglong-xdd.git xdd
+    - name: Push XDD
+      uses: ad-m/github-push-action@master
+      with:
+        directory: xdd
+        github_token: ${{ secrets.TOKEN }}
+        branch: xdd
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        token: ${{ secrets.TOKEN }}
+        retain_days: 1
+        keep_minimum_runs: 2
