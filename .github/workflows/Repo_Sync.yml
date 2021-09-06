@@ -34,24 +34,6 @@ jobs:
         directory: sillygirl
         github_token: ${{ secrets.TOKEN }}
         branch: sillygirl
-    - name: Clone Ninja
-      run: |
-        git clone -b main https://github.com/gcdd1993/qinglong-ninja.git ninja
-    - name: Push Ninja
-      uses: ad-m/github-push-action@master
-      with:
-        directory: ninja
-        github_token: ${{ secrets.TOKEN }}
-        branch: ninja
-    - name: Clone XDD
-      run: |
-        git clone -b master https://github.com/gcdd1993/qinglong-xdd.git xdd
-    - name: Push XDD
-      uses: ad-m/github-push-action@master
-      with:
-        directory: xdd
-        github_token: ${{ secrets.TOKEN }}
-        branch: xdd
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
