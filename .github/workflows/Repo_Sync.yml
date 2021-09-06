@@ -25,15 +25,15 @@ jobs:
         directory: qinglong
         github_token: ${{ secrets.TOKEN }}
         branch: qinglong
-    - name: Clone XDD_Main
+    - name: Clone sillyGirl
       run: |
-        git clone -b main https://github.com/cdle/xdd.git master
-    - name: Push XDD_Main
+        git clone -b main https://github.com/cdle/sillyGirl.git sillygirl
+    - name: Push sillyGirl
       uses: ad-m/github-push-action@master
       with:
-        directory: master
+        directory: sillygirl
         github_token: ${{ secrets.TOKEN }}
-        branch: main
+        branch: sillygirl
     - name: Clone Ninja
       run: |
         git clone -b main https://github.com/gcdd1993/qinglong-ninja.git ninja
