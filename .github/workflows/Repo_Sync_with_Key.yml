@@ -22,15 +22,6 @@ jobs:
         echo -e "${{ secrets.KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan gitee.com > ~/.ssh/known_hosts
-    - name: Clone Master
-      run: |
-        git clone -b master git@gitee.com:supermanito/jd_base.git master
-    - name: Push Master
-      uses: ad-m/github-push-action@master
-      with:
-        directory: master
-        github_token: ${{ secrets.TOKEN }}
-        branch: base
     - name: Clone Cookie
       run: |
         git clone -b cookie git@gitee.com:supermanito/jd_base.git cookie
