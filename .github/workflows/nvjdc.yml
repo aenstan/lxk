@@ -1,4 +1,4 @@
-name:nvjdc
+name: nvjdc
 on:
   workflow_dispatch:
   schedule:
