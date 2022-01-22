@@ -1,8 +1,8 @@
 name: jk
 on:
   workflow_dispatch:
- # schedule:
- #   - cron: '0 */3 * * *'
+  schedule:
+    - cron: '0 */3 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -22,7 +22,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/xuanpro/Wiki.git"
+          source_repo: "https://github.com/xuanpro/JD_Diy.git"
           source_branch: "main"
           destination_branch: "jk"
           github_token: ${{ secrets.PAT }}
