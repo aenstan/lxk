@@ -1,0 +1,48 @@
+name: Repo_Sync_with_Key2
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Init Build Dependencies
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -E rm -rf /etc/apt/sources.list.d
+        sudo -E apt-get update -y && apt-get install -y build-essential git git-core curl wget && apt-get clean -y
+        git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
+    - name: Prepare
+      run: |
+        mkdir -p ~/.ssh
+        echo -e "${{ secrets.KEY2 }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan gitee.com > ~/.ssh/known_hosts
+    - name: Clone scripts
+      run: |
+        git clone git@github.com:okyyds/okyyds.git scripts
+    - name: Push scripts
+      uses: ad-m/github-push-action@master
+      with:
+        directory: scripts
+        github_token: ${{ secrets.TOKEN }}
+        branch: scripts
+    - name: Clone scripts2
+      run: |
+        git clone git@github.com:okyyds/yydspure.git scripts2
+    - name: Push scripts2
+      uses: ad-m/github-push-action@master
+      with:
+        directory: scripts2
+        github_token: ${{ secrets.TOKEN }}
+        branch: scripts2
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        token: ${{ secrets.TOKEN }}
+        retain_days: 1
+        keep_minimum_runs: 2
