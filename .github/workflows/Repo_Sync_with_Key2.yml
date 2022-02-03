@@ -24,7 +24,7 @@ jobs:
         ssh-keyscan gitee.com > ~/.ssh/known_hosts
     - name: Clone scripts
       run: |
-        git clone git@github.com:okyyds/okyyds.git scripts
+        git clone git@github.com:okyyds/yyds.git scripts
     - name: Push scripts
       uses: ad-m/github-push-action@master
       with:
