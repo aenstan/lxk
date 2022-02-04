@@ -18,7 +18,7 @@ jobs:
         git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
     - name: Clone Scripts
       run: |
-        git clone https://github.com/okyyds/yyds.git scripts
+        git clone -b master https://github.com/okyyds/yyds.git scripts
     - name: Push Scripts
       uses: ad-m/github-push-action@master
       with:
@@ -27,7 +27,7 @@ jobs:
         branch: scripts
     - name: Clone Scripts2
       run: |
-        git clone https://github.com/okyyds/yydspure.git scripts2
+        git clone -b master https://github.com/okyyds/yydspure.git scripts2
     - name: Push Scripts2
       uses: ad-m/github-push-action@master
       with:
