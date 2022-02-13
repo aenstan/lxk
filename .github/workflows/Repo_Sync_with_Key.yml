@@ -24,7 +24,7 @@ jobs:
         ssh-keyscan gitee.com > ~/.ssh/known_hosts
     - name: Clone dev
       run: |
-        git clone -b dev git@jd_base_gitee:supermanito/jd_base.git dev
+        git clone -b master git@jd_base_gitee:supermanito/jd_base.git dev
     - name: Push dev
       uses: ad-m/github-push-action@master
       with:
