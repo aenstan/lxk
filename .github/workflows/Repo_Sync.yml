@@ -43,6 +43,15 @@ jobs:
         directory: scripts
         github_token: ${{ secrets.TOKEN }}
         branch: scripts
+    - name: Clone KingRan
+      run: |
+        git clone -b main https://github.com/KingRan/KR.git scripts3
+    - name: Push Scripts3
+      uses: ad-m/github-push-action@master
+      with:
+        directory: scripts3
+        github_token: ${{ secrets.TOKEN }}
+        branch: scripts3
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
