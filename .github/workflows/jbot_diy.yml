@@ -1,7 +1,7 @@
 name: jbot_diy
 on:
-  schedule:
-    - cron: '0 */2 * * *'
+  #schedule:
+  #  - cron: '0 */2 * * *'
   workflow_dispatch:
   watch:
     types: started
