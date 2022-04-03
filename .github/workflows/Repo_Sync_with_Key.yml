@@ -40,6 +40,15 @@ jobs:
         directory: dev
         github_token: ${{ secrets.TOKEN }}
         branch: dev
+    - name: Clone dev.githubwyj
+      run: |
+        git clone -b dev.githubwyj git@gitee.com:supermanito/jd_base.git dev.githubwyj
+    - name: Push dev.githubwyj
+      uses: ad-m/github-push-action@master
+      with:
+        directory: dev.githubwyj
+        github_token: ${{ secrets.TOKEN }}
+        branch: dev.githubwyj
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
