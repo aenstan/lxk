@@ -49,6 +49,15 @@ jobs:
         directory: dev.githubwyj
         github_token: ${{ secrets.TOKEN }}
         branch: dev.githubwyj
+    - name: Clone SuperManito/touluyyds
+      run: |
+        git clone -b master git@gitee.com:SuperManito/touluyyds.git touluyyds
+    - name: Push SuperManito/touluyyds
+      uses: ad-m/github-push-action@master
+      with:
+        directory: touluyyds
+        github_token: ${{ secrets.TOKEN }}
+        branch: touluyyds
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
